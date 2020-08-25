@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mapper">
+	<insert id="infoInsert" parameterType="userInfo">
+		INSERT INTO mem (seq, id,
+		password, name, gender)
+		VALUES (
+		(SELECT IFNULL(MAX(a.seq),0)+1 AS seq
+		FROM mem as a)
+		, #{id}
+		, #{password}
+		, #{name}
+		, #{gender}
+		)
+		;
+	</insert>
+
+	<!-- <select id="loginCheck" parameterType="userInfo" resultType="userInfo"> -->
+	<!-- SELECT *,count(*) as count FROM mem WHERE id = #{id} AND password = 
+		#{password}; -->
+	<!-- </select> -->
+
+	<select id="loginCheck" parameterType="userInfo"
+		resultType="userInfo">
+		SELECT * FROM mem WHERE id = #{id};
+	</select>
+
+
+	<select id="idchk" parameterType="userInfo" resultType="int">
+	select count(if(id=#{id},id,NULL)) FROM mem;
+	</select>
+
+	<!-- <select id="loginCheck" parameterType="userInfo" -->
+	<!-- resultType="userInfo"> -->
+	<!-- SELECT distinct textSubject FROM sample.language; -->
+	<!-- </select> -->
+	
+	<select id="allpost"  resultType="userInfo">
+		select*from language;
+	</select>
+
+	<select id="findpost_Title"  resultType="userInfo">
+		select*from language where postName = #{input_find};
+	</select>
+	<select id="findpost_postID"  resultType="userInfo">
+		select*from language where postId = #{input_find};
+	</select>
+
+	<select id="showFind_post"  resultType="userInfo">
+		select*from language where postName = #{postName} AND postNum = #{postNum};
+	</select>
+
+	<insert id="postwrite" parameterType="userInfo">
+		INSERT INTO language (postNum, postName,postId,postText, postDate)	
+			VALUES ((SELECT IFNULL(MAX(a.postNum),0)+1 AS seq FROM language as a),
+			 #{postName},
+			 #{id}, 
+			 #{postText}, 
+			 NOW()
+		);
+	</insert>
+
+
+	<select id="mapper.posLastPage"  resultType="int">
+		select count(*) as cnt from language;
+	</select>
+	
+	<delete id="deletePost"  parameterType="userInfo">
+ 		DELETE FROM language WHERE postNum  =#{postNum};
+ 	</delete>
+</mapper>

@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+body {
+	font-family: Arial;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #F2F2F2;
+}
+
+li {
+	list-style: none;
+}
+
+.div_top_view {
+	width: 1100px;
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	/* border: 1px solid black; */
+	margin-top: 5px;
+}
+
+.a_top_view {
+	font-size: 15px;
+	/* border: 1px solid black ; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-right: 5px;
+	height: 20px;
+}
+
+.h3_top_view {
+	font-size: 15px;
+	margin-right: 5px;
+	/* border: 1px solid black ; */
+}
+
+.div_banner_view {
+	width: 1100px;
+	height: 200px;
+	margin-top: 5px;
+}
+
+.img_banner {
+	width: 1100px;
+	height: 200px;
+	position: relative;
+}
+
+.h1_banner {
+	position: absolute;
+	margin-bottom: 30px;
+	top: 7%;
+	left: 48%;
+	font-size: 60px;
+}
+
+.div_body {
+	width: 1100px;
+	height: 700px;
+	/* 	border: 1px solid black; */
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+}
+.div_title{
+	margin-bottom: 20px;	
+	
+}
+
+.input_text_title{
+	width
+	
+}
+
+.textarea_writepost{
+	width: 1000px;
+	height: 550px;
+	font-size: 25px;
+	
+}

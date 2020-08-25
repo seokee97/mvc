@@ -1,0 +1,64 @@
+@charset "UTF-8";
+        .bodyMain {
+            width: auto;
+            height: 1100;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #F2F2F2;
+        }
+        .divMain{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .mainHead {
+            margin-top: 40px;
+            color:azure;
+        }
+
+        .bannderText {
+            font-size: 70px;
+            font-family: Nanum;
+            justify-content: center;
+            display: flex;
+            color: #262120;
+        }
+
+        .text {
+            margin-top: 30px;
+            font-size: 17px;
+        }
+
+        .textInput {
+            width: 100%;
+            height: 40px;
+            font-size: 30px;
+        }
+        .datebox{
+            width: 100%;
+            height: 40px;
+            font-size: 20px;
+        }
+        .idcheckBtn{
+        	width: auto;
+        	height: 40px;
+        	font-size: 20px;
+        	margintop: 20px;
+        }
+        .singupBtn {
+            width: 150px;
+            height: 50px;
+            margin-top: 50px;
+        }
+        .genderBox{
+            width: 100%;
+            height: 40px;
+            font-size: 20px;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
