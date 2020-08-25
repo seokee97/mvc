@@ -147,13 +147,7 @@ public class HomeController {
 		UserInfovo vo_post = homeService.showFindPost_one(vo);
 		model.addAttribute("postInfo",vo_post);
 		model.addAttribute("userId", session.getAttribute("userinfo"));
-		
-		try {
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-			
-		}
+
 		return "showpost";
 	}
 
@@ -176,7 +170,7 @@ public class HomeController {
 			System.out.println("post에러"+e.getMessage());
 		}
 		
-		return "main";
+		return "findmain";
 	}
 
 	// 게시글삭제
@@ -213,6 +207,30 @@ public class HomeController {
 		return "main";
 	}
 	
+	@RequestMapping(value = "/findpaging", method = { RequestMethod.GET, RequestMethod.POST })
+	public String findpaging(UserInfovo vo, Model model, HttpSession session) throws Exception {
+		try {
+			findPageNum = vo.getNow_Page();
+			List<UserInfovo> findPostList = findPage.return_Post_Page(findPageNum);
+			findPageNum = 1;
+			model.addAttribute("maxPage", findPage.getMax_Page());
+			model.addAttribute("findPost_OK", "findPost_OK");
+			model.addAttribute("findPostList", findPostList);
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			System.out.println("post에러"+e.getMessage());
+		}
+
+		try {
+			System.out.println(session.getAttribute("userinfo"));
+			model.addAttribute("userinfo", session.getAttribute("userinfo"));
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			model.addAttribute("userinfo", null);
+			return "findmain";
+		}
+		return "findmain";
+	}
 	// 글쓰기
 	@RequestMapping(value = "/postwritesql", method = { RequestMethod.GET, RequestMethod.POST })
 	public String postwritesql(UserInfovo vo, Model model, HttpSession session) throws Exception {

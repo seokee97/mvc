@@ -134,11 +134,14 @@
 			</table>
 			<div class="div_page">
 				<script>
-				var inputValue = ${inputfind};
+				var inputValue = "${inputfind}";
 				var maxPage = ${maxPage};
 					for(var i = 0; i<maxPage;i++){
 						document.write("<form name = 'paging' id= 'paging' action='paging'>");
 							document.write("<input id = 'now_Page' name = 'now_Page' type='submit' value = "+(i+1)+">");
+							if(inputValue == ""){
+								document.write("<input name = 'input_find' type='hidden' value = inputValue>");
+							}
 						document.write("</form>");
 					}
 				</script>
